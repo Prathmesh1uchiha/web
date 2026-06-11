@@ -1,16 +1,45 @@
-# React + Vite
+# 🛒 NovaTech E-Commerce Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple e-commerce website built using React and Vite.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Responsive Navbar
+- Hero Section
+- Categories Section
+- Featured Products
+- Testimonials
+- About Page
+- Contact Page
+- Footer
 
-## React Compiler
+## 🛠️ Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React.js
+- Vite
+- JavaScript
+- CSS
 
-## Expanding the ESLint configuration
+## 📸 Screenshots
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Screenshot 1
+![Screenshot 1](ss/pic1.png)
+
+### Screenshot 2
+![Screenshot 2](ss/pic2.png)
+
+### Screenshot 3
+![Screenshot 3](ss/pic3.png)
+
+### Screenshot 4
+![Screenshot 4](ss/pic4.png)
+
+### Screenshot 5
+![Screenshot 5](ss/pic5.png)
+
+### Screenshot 6
+![Screenshot 6](ss/pic6.png)
+
+## 👨‍💻 Developed By
+
+Prathmesh
