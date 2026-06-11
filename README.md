@@ -42,4 +42,4 @@ A simple e-commerce website built using React and Vite.
 
 ## 👨‍💻 Developed By
 
-Prathmesh
+Prathamesh
