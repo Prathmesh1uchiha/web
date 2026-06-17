@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { AddProduct } from "./pages/AddProduct";
 
 import { Navbar } from "./Components/Navbar";
 import { Footer } from "./Components/Footer";
@@ -18,6 +19,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/add-product" element={<AddProduct />} />
       </Routes>
 
       <Footer />

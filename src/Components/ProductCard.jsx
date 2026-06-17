@@ -1,66 +1,79 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { supabase } from "../supabase";
+
 export function ProductCard() {
+  const [products, setProducts] = useState([]);
+    useEffect(() => {
+  getProducts();
+}, []);
+
+     const getProducts = async () => {
+  const { data, error } = await supabase
+    .from("products")
+    .select("*");
+
+  console.log("DATA:", data);
+  console.log("ERROR:", error);
+
+  if (!error) {
+    setProducts(data);
+  }
+};
+
+const deleteProduct = async (id) => {
+  await supabase
+    .from("products")
+    .delete()
+    .eq("id", id);
+
+  getProducts();
+};
+  
   return (
+
     <div style={styles.container}>
-      <h1 style={styles.heading}>Featured Products</h1>
+    <h1 style={styles.heading}>Featured Products</h1>
 
-      <div style={styles.grid}>
-        <div style={styles.card}>
-          <img
-            src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=700"
-            alt="Laptop"
-            style={styles.image}
-          />
-          <h3>Ultra Gaming Laptop</h3>
-          <p style={styles.description}>
-            High performance laptop with powerful graphics.
-          </p>
-          <h2 style={styles.price}>₹74,999</h2>
-          <button style={styles.button}>Buy Now</button>
-        </div>
+    <Link to="/add-product">
+      <button style={styles.button}>
+        Add Item
+      </button>
+    </Link>
 
-        <div style={styles.card}>
-          <img
-            src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=700"
-            alt="Phone"
-            style={styles.image}
-          />
-          <h3>Flagship Smartphone</h3>
-          <p style={styles.description}>
-            Premium camera, AMOLED display and fast processor.
-          </p>
-          <h2 style={styles.price}>₹49,999</h2>
-          <button style={styles.button}>Buy Now</button>
-        </div>
+    <div style={styles.grid}>
+  {products.map((item) => (
+    <div key={item.id} style={styles.card}>
+      <img
+        src={item.image}
+        alt={item.name}
+        style={styles.image}
+      />
 
-        <div style={styles.card}>
-          <img
-            src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700"
-            alt="Headphones"
-            style={styles.image}
-          />
-          <h3>Wireless Headphones</h3>
-          <p style={styles.description}>
-            Crystal clear sound with active noise cancellation.
-          </p>
-          <h2 style={styles.price}>₹5,999</h2>
-          <button style={styles.button}>Buy Now</button>
-        </div>
+      <h3>{item.name}</h3>
 
-        <div style={styles.card}>
-          <img
-            src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=700"
-            alt="Gaming"
-            style={styles.image}
-          />
-          <h3>Gaming Console</h3>
-          <p style={styles.description}>
-            Enjoy immersive gaming with next-gen performance.
-          </p>
-          <h2 style={styles.price}>₹54,999</h2>
-          <button style={styles.button}>Buy Now</button>
-        </div>
-      </div>
+      <p style={styles.description}>
+        {item.details}
+      </p>
+
+      <h2 style={styles.price}>
+        ₹{item.price}
+      </h2>
+
+      <button style={styles.button}>
+        Buy Now
+      </button>
+
+      <button
+        style={styles.deleteButton}
+        onClick={() => deleteProduct(item.id)}
+      >
+        🗑️ Delete
+      </button>
     </div>
+  ))}
+</div>
+</div>
   );
 }
 
@@ -83,6 +96,17 @@ const styles = {
     flexWrap: "wrap",
     gap: "25px",
   },
+
+  deleteButton: 
+  {
+     backgroundColor: "red",
+     color: "white",
+     border: "none",
+  padding: "10px 20px",
+  borderRadius: "8px",
+  cursor: "pointer",
+  marginTop: "10px",
+   },
 
   card: {
     width: "260px",
