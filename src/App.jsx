@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { AddProduct } from "./pages/AddProduct";
+import { AddProduct } from "./pages/Addproduct";
 
 import { Navbar } from "./Components/Navbar";
 import { Footer } from "./Components/Footer";
